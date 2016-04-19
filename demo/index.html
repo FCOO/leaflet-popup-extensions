@@ -30,8 +30,8 @@
 
 		map.on('click', function( mouseEvent ){
 			var popup = L.popup({
-				getContent				: function(){ 
-					var content = ''
+				getContent				: function(popup){ 
+					var content = popup.getLatLng() + '<br>',
 							lines = 1 + Math.floor(Math.random()*10);
 
 					for (var i=0; i<lines; i++ ){
