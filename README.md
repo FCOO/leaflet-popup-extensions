@@ -17,7 +17,7 @@ http://FCOO.github.io/leaflet-popup-extensions/demo/
 
 ### Dynamic creating content
 	var mypopup = L.popup({
-	               getContent: function(){ return 'This is the content'; },
+	               getContent: function( popup ){ return 'This is the content'; },
 	               context   : null
 	});
 
