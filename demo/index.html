@@ -15,7 +15,7 @@
 
 <body>
 	<div id="map" style="width: 800px; height: 600px"></div>
-	<p>Click on the map to open a popup - drag the map and see the popup updating when the drag is finish</p>
+	<p>Click on the map to open a popup - drag or zoom the map and see the popup updating when the drag/zoom is finish</p>
 
 	
 	
@@ -40,7 +40,7 @@
 				
 					return content + 'This is a random<br>number '+Math.floor(Math.random()*1000000); 
 				},
-				updateOnMapEvents: 'dragend'
+				updateOnMapEvents: 'dragend,zoomend'
 				
 			});
 

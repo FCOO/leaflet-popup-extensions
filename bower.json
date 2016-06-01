@@ -1,6 +1,6 @@
 {
   "name": "leaflet-popup-extensions",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/FCOO/leaflet-popup-extensions",
   "authors": [
     "NielsHolt"
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "jquery": "latest",
-    "leaflet": "latest"
+    "leaflet": "1.0.0-rc.1"
   },
   "devDependencies": {
     "bourbon": "latest",

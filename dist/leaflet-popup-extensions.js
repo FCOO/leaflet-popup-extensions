@@ -32,19 +32,31 @@
 
 
 
-	//Overwrite Popup._getEvents to add the map-events listed in options.updateOnMapEvents
-	L.Popup.prototype._getEvents = function (_getEvents) {
-		return function () {
-		//Original function/method
-		var events = _getEvents.apply(this, arguments);
+	//Overwrite Popup._getEvents (leaflet version <= 0.7.7) and
+	//Popup.getEvents (leaflet version >= 1.0.0) to add the
+	//map-events listed in options.updateOnMapEvents
+	function newGetEvents( originalGetEvents ) {
+			return function () {
+			//Original function/method
+			var events = originalGetEvents.apply(this, arguments);
 
-		//Add the events the fire update
-		if (this.options.updateOnMapEvents)
-		  events[this.options.updateOnMapEvents] = this._updateContent;
+			//Add the events the fire update
+			if (this.options.updateOnMapEvents){
+				var updateOnMapEventList = this.options.updateOnMapEvents.split(',').join(' ').split(' ');
+				for (var i=0; i<updateOnMapEventList.length; i++ )
+					 events[updateOnMapEventList[i]] = this._updateContent;
+			}
+			return events;
+		};
+	}
 
-		return events;
-	}} (L.Popup.prototype._getEvents);
+	//Verision <= 0.7.7
+	if (L.Popup.prototype._getEvents)
+		L.Popup.prototype._getEvents = newGetEvents( L.Popup.prototype._getEvents );
 
+	//Verision >= 1.0.0
+	if (L.Popup.prototype.getEvents)
+		L.Popup.prototype.getEvents = newGetEvents( L.Popup.prototype.getEvents );
 
 
 	//OR/AND extend a prototype-method (METHOD) of a leaflet {CLASS}

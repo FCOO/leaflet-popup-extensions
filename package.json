@@ -1,6 +1,6 @@
 {
   "name": "leaflet-popup-extensions",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/FCOO/leaflet-popup-extensions",
   "author": "NielsHolt nho@fcoo.dk",
   "description": "package.json is only use for building the package. see bower.json for more info",
