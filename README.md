@@ -3,7 +3,7 @@
 
 
 ## Description
-Extensions to leaflet popup: Dynamic contents, update on map-events, resizeable
+Extensions to leaflet popup: Dynamic contents, update on map-events, resizeable, header, and buttons
 
 
 ## Installation
@@ -16,7 +16,7 @@ http://FCOO.github.io/leaflet-popup-extensions/demo/
 ## Usage
 
 ### Dynamic creating content
-	var mypopup = L.popup({
+	var myPopup = L.popup({
 	               getContent: function( popup ){ return 'This is the content'; },
 	               context   : null
 	});
@@ -25,13 +25,25 @@ http://FCOO.github.io/leaflet-popup-extensions/demo/
 `context`	is the optional context of `getContent`
 
 ### Update content on map-events
-	var mypopup = L.popup({
+	var myPopup = L.popup({
 	               updateOnMapEvents: "zoomend latlngformatchange"
 	});
 
 When any of the events in `updateOnMapEvents` is fired on the map, the popup is updated. 
 
-#### Resizable popup
+#### Header and Icon
+	var myPopup = L.popup({
+	               header: "This is a header",
+	               icon  : "map-marker"
+	});
+
+Will add a header and icon to the popup next to the close-button
+`header` is the header text
+`icon` is the name of a [font-awesome icon](http://fontawesome.io/)
+
+
+
+#### Resizeable popup
 
 ** TODO **
 

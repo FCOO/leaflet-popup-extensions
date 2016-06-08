@@ -1,5 +1,5 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html lang="da" style="font-size: 100%">
+<html lang="da" style="font-size: 100%" class=".leaflet-touch">
 <head>
 	<title>fcoo.dk - leaflet-popup-extensions - Demo</title>
 	<meta charset="utf-8" />
@@ -10,11 +10,12 @@
 	<meta name='owner' content='FCOO'>
 
   <link  href="bower_components.css" rel="stylesheet">	
+  <link  href="css/font-awesome.css" rel="stylesheet">	
   <link  href="../src/leaflet-popup-extensions.css" rel="stylesheet">	
 </head>
 
 <body>
-	<div id="map" style="width: 800px; height: 600px"></div>
+	<div id="map" style="width: 600px; height: 400px"></div>
 	<p>Click on the map to open a popup - drag or zoom the map and see the popup updating when the drag/zoom is finish</p>
 
 	
@@ -22,15 +23,35 @@
 	<script src="bower_components.js"></script>
 	<script src="../src/leaflet-popup-extensions.js"></script>
 	<script>
+		L.Icon.Default.imagePath = "\images";
+
+
+/*
+		function addMarker(a,b,c,d, button, map ){
+console.log(a,b,c,d);
+			L.marker([56.2, 11.5]).addTo(map)
+				.bindPopup('A pretty CSS3 popup.<br> Easily customizable.', {header:'davs'})
+				.openPopup();
+		}		
+*/		
+		
 		var map = L.map('map').setView([56.2, 11.5], 6);
-		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</a>'
-     }).addTo(map);
+		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+			var niels = L.marker([56.2, 11.5]).addTo(map)
+				.bindPopup('A pretty CSS3 popup.<br> Easily customizable.', {maxWidth:200, header:'This is a header', icon:'calculator', buttonRemove:true, buttonClose:true})
+				.openPopup();
 
 		map.on('click', function( mouseEvent ){
 			var popup = L.popup({
-				getContent				: function(popup){ 
+				maxWidth: 200,
+				header: 'This is a very long header and it should be to long',
+
+				//buttonOk: true,
+				buttonRemove: true,
+				buttonClose: true,
+//				buttons: [{ icon:'map-marker ', text:'Add marker', onClick: addMarker}],
+				getContent	: function(popup){ 
 					var content = popup.getLatLng() + '<br>',
 							lines = 1 + Math.floor(Math.random()*10);
 

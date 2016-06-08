@@ -7,7 +7,8 @@
   ],
   "description": "",
   "main": [
-    "dist/leaflet-popup-extensions.js"
+    "dist/leaflet-popup-extensions.js",
+    "dist/leaflet-popup-extensions.css"
   ],
   "repository": {
     "type": "git",
@@ -15,7 +16,8 @@
   },
   "dependencies": {
     "jquery": "latest",
-    "leaflet": "latest"
+    "leaflet": "latest",
+    "leaflet-control-button-group": "fcoo/leaflet-control-button-group#latest"
   },
   "devDependencies": {
     "bourbon": "latest",

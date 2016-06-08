@@ -1,0 +1,116 @@
+/***********************************************
+	leaflet-popup-extensions.scss, 
+
+	(c) 2016, FCOO
+
+	https://github.com/FCOO/leaflet-popup-extensions
+	https://github.com/FCOO
+
+
+************************************************/
+//BOURBON - http://bourbon.io/
+@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
+
+//MODERNIZR-MIXIN - https://github.com/danielguillan/modernizr-mixin
+@import "../bower_components/modernizr-mixin/stylesheets/modernizr";
+
+//MATHSASS - https://github.com/terkel/mathsass
+@import "../bower_components/mathsass/dist/math";
+
+
+.leaflet-popup {
+
+	$border-size: 1px;
+
+	$border-inside: 1px solid #e5e5e5; 
+
+	$bootstrap-succes-color: #dff0d8;
+
+	@mixin box-shadow($size : 100%){
+		$shadow-size1: 2*$border-size*$size/100%; 
+		$shadow-size2: rem(9*$size/100%);
+		box-shadow: $shadow-size1 1.5*$shadow-size1 $shadow-size1 0 rgba(0,0,0,.73), $shadow-size2 1.5*$shadow-size2 $shadow-size2 0 rgba(0,0,0,.13);
+	}
+
+
+	//Adjust style for leaflet popup to look like bootstrap modal window
+	.leaflet-popup-content-wrapper, 
+	.leaflet-popup-tip  {
+		background-color: white;//#f1f1f1;//#fff; 
+		border		: 1px solid rgba(0, 0, 0, 0.2);
+		@include box-shadow();//box-shadow: 0 0px 15px rgba(0, 0, 0, 0.5);
+		border-radius: 6px;
+	}
+
+	.leaflet-popup-content {
+	 margin-top: 0 !important;
+	}
+
+	//Remove top-border from tip
+	.leaflet-popup-tip-container {
+		top: -1px; 
+		border-top: 1px solid #fff; 
+	}
+
+	//Adjust div inside leaflet-popup-content-wrapper so that only the last one has the 'big' bottom margin
+	.leaflet-popup-content-wrapper > div {
+	//	background-color: green;
+		box-sizing: border-box;
+		margin: 0;
+		padding: 6px;
+	}
+
+
+	.leaflet-popup-header {
+		$height: 14px + 4px;
+		border-bottom	: $border-inside;
+		height				: $height;
+		line-height		: $height;
+		padding				: 0 !important;
+		padding-right	: 26px !important; // = 4 + 18 + 4
+		padding-left	: 4px !important; 
+		font-size			: 13px;
+		font-weight		: bold;
+		white-space		: nowrap; 
+    overflow			: hidden;
+		text-overflow	: ellipsis; 
+
+		&.icon {
+			//background-color: red;
+
+			i {
+				height: $height;
+				padding-right	: 4px !important; 
+				width: auto;
+			}
+		}
+	}
+	
+	
+	.leaflet-popup-button-container {
+		width	: 100%;
+		height: 32px; //20 + 6 + 6
+		.leaflet-touch & { height: 38px; } //26 + 6 + 6
+		margin: 0;
+		text-align: center;
+		border-top: $border-inside;
+
+		//Reset .leaflet-bar
+		.leaflet-bar { 
+			display				: inline-block;
+			border-radius	: 0px !important;
+			box-shadow: none !important;
+			border		: none !important;
+			padding		: 0;
+			margin		: auto;
+
+			&.horizontal {
+				width: 100%;
+			}
+		}
+		
+
+	}
+
+
+} //end of .leaflet-popup
