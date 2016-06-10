@@ -26,43 +26,34 @@
 		L.Icon.Default.imagePath = "\images";
 
 
-/*
-		function addMarker(a,b,c,d, button, map ){
-console.log(a,b,c,d);
-			L.marker([56.2, 11.5]).addTo(map)
-				.bindPopup('A pretty CSS3 popup.<br> Easily customizable.', {header:'davs'})
-				.openPopup();
+
+		function addMarker(onClickObj){
+			L.marker( onClickObj.latLng )
+				.addTo( onClickObj.map )
+				.bindPopup(onClickObj.latLng.toString(4), {icon:'map-marker ', header:'Marker', buttonRemove: true});
+			onClickObj.popup._close();
 		}		
-*/		
 		
 		var map = L.map('map').setView([56.2, 11.5], 6);
 		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-			var niels = L.marker([56.2, 11.5]).addTo(map)
-				.bindPopup('A pretty CSS3 popup.<br> Easily customizable.', {maxWidth:200, header:'This is a header', icon:'calculator', buttonRemove:true, buttonClose:true})
-				.openPopup();
-
 		map.on('click', function( mouseEvent ){
 			var popup = L.popup({
-				maxWidth: 200,
-				header: 'This is a very long header and it should be to long',
-
-				//buttonOk: true,
-				buttonRemove: true,
-				buttonClose: true,
-//				buttons: [{ icon:'map-marker ', text:'Add marker', onClick: addMarker}],
+				maxWidth		: 200,
+				header					: 'This is a very long header and it should be to long',
+				buttonClose			: true,
+				buttons					: [{ icon:'map-marker ', text:'Add marker', onClick: addMarker}],
+				buttonHorizontal: false,
 				getContent	: function(popup){ 
 					var content = popup.getLatLng() + '<br>',
 							lines = 1 + Math.floor(Math.random()*10);
-
 					for (var i=0; i<lines; i++ ){
 						content += 'line '+i+'<br>';
 					}
-				
 					return content + 'This is a random<br>number '+Math.floor(Math.random()*1000000); 
 				},
 				updateOnMapEvents: 'dragend,zoomend'
-				
+
 			});
 
 			popup.setLatLng(mouseEvent.latlng).openOn(map);

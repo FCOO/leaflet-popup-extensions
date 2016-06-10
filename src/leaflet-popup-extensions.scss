@@ -54,7 +54,6 @@
 
 	//Adjust div inside leaflet-popup-content-wrapper so that only the last one has the 'big' bottom margin
 	.leaflet-popup-content-wrapper > div {
-	//	background-color: green;
 		box-sizing: border-box;
 		margin: 0;
 		padding: 6px;
@@ -75,23 +74,19 @@
     overflow			: hidden;
 		text-overflow	: ellipsis; 
 
-		&.icon {
-			//background-color: red;
-
-			i {
-				height: $height;
-				padding-right	: 4px !important; 
-				width: auto;
-			}
+		&.icon i {
+			height: $height;
+			padding-right	: 4px !important; 
+			width: auto;
 		}
 	}
 	
 	
 	.leaflet-popup-button-container {
 		width	: 100%;
-		height: 32px; //20 + 6 + 6
-		.leaflet-touch & { height: 38px; } //26 + 6 + 6
 		margin: 0;
+		padding-top		: 4px !important;
+		padding-bottom: 4px !important;
 		text-align: center;
 		border-top: $border-inside;
 
@@ -105,12 +100,8 @@
 			margin		: auto;
 
 			&.horizontal {
-				width: 100%;
+//				width: 100%;
 			}
 		}
-		
-
 	}
-
-
 } //end of .leaflet-popup

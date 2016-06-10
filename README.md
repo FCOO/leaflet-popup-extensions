@@ -3,7 +3,8 @@
 
 
 ## Description
-Extensions to leaflet popup: Dynamic contents, update on map-events, resizeable, header, and buttons
+Extensions to leaflet popup: Dynamic contents, update on map-events, header, and buttons
+TODO: 
 
 
 ## Installation
@@ -41,9 +42,34 @@ Will add a header and icon to the popup next to the close-button
 `header` is the header text
 `icon` is the name of a [font-awesome icon](http://fontawesome.io/)
 
+#### Buttons
+There are tree standard buttons available: `[Ok]`, `[Remove]`, and `[Close]`
+Individual buttons are added by setting `options.buttons` 
+   
+`[Remove]` and `[Close]` have a default onClick-function while `[Ok]` needs a onClick-function
+To add the default buttons use
+
+	L.popup({ onOk: function( onClickObj ){..} });  //[Ok]
+	L.popup({ buttonRemove: true });                //[Remove]
+	L.popup({ buttonClose: true });                 //[Close]	
 
 
-#### Resizeable popup
+Individual buttons are added by setting `options.buttons` as described in [fcoo/leaflet-control-button-group](https://github.com/FCOO/leaflet-control-button-group)
+
+To align the buttons horizontal or vertical set the option `buttonHorizontal`
+
+	{buttonHorizontal: true}  //Buttons are aligned horizontal (default)
+	{buttonHorizontal: false} //Buttons are stacked vertical
+
+
+##### onClickObj
+The object passed to the onClick-functions contains:
+
+	{id, latLng, button, popup, source, map, selected}
+
+(`source` is the object (if any) where the popup was opened on)
+
+#### Resizeable
 
 ** TODO **
 

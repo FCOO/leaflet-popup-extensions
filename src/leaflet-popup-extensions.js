@@ -17,6 +17,7 @@
 		buttonRemove			: false,
 		buttonClose				: false,
 		buttons						: [],
+		buttonHorizontal	: true,
 		getContent				: null,
 		context						: null,
 		updateOnMapEvents	: ''
@@ -25,9 +26,15 @@
 	//Extend L.Popup with const for standard buttonc
 	L.extend(L.Popup, {
 		//Const to define differnet formats
-		BUTTON_OK			: {id:'btnOk',			icon:'check', text:'Ok', hoverColor: 'green'},
-		BUTTON_REMOVE	: {id:'btnRemove',	icon:'trash-o', text:'Remove', onClick: function(){ console.log(this._source)}},
-		BUTTON_CLOSE	: {id:'btnClose',		icon:'times', text:'Close', hoverColor: 'red', onClick: L.Popup.prototype._close }
+		BUTTON_OK			: {	id:'btnOk',			icon:'check',		text:'Ok',			hoverColor: 'green'},
+		BUTTON_REMOVE	: {	id:'btnRemove',	icon:'trash-o', text:'Remove',												
+											onClick: function(onClickObj){ 
+												if (onClickObj.source && onClickObj.map)
+													onClickObj.map.removeLayer(onClickObj.source);
+											}
+										},
+		BUTTON_CLOSE	: {	id:'btnClose',		icon:'times',		text:'Close',		hoverColor: 'red',
+											onClick: L.Popup.prototype._close }
 	});
 
 	//Extend the L.Popup._initLayout to check for extended contents and/or buttons and add the nodes accordingly
@@ -51,7 +58,9 @@
 
 				this._headerContainer.append( this.options.header );
 			}
-
+			else
+				//Add padding to prevent context to coner topright close button
+				$(this._wrapper).css('padding-top', '13px');
 
 			//Extend the _wrapper with containers for buttons
 			var buttons = [];
@@ -75,13 +84,16 @@
 						.css('maxWidth', this.options.maxWidth+'px')
 						.appendTo( this._wrapper );
 				this.buttonGroup = new L.Control.ButtonGroup({
-					horizontal			: true,
+					horizontal			: this.options.buttonHorizontal,
 					small						: true,
 					equalWidth			: true,
 					centerText			: true,
 					separateButtons	: true,
+					onClickObj			: {popup: this, latLng: this.getLatLng(), source: this._source},
 					buttons					: buttons
 				});
+
+				this.buttonGroup._map = this._map;
 				this.buttonGroup.addButtons();
 				this._buttonGroupContainer.append( this.buttonGroup._container );
 
