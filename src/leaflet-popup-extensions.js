@@ -96,34 +96,7 @@
 				this.buttonGroup._map = this._map;
 				this.buttonGroup.addButtons();
 				this._buttonGroupContainer.append( this.buttonGroup._container );
-
 			}
-
-/*
-			if (this._source && this._source._extendPopup){
-				this._extendPopup = this._source._extendPopup;
-
-				var onlyExtendPopup = (this._content == L.onlyExtendPopupContent);
-				if (onlyExtendPopup)
-					this._extendContentNode = this._contentNode
-				else {
-					//Add the container for the open/close button and the container for the extended content
-					this._extendButtonNode = L.DomUtil.create('div', 'leaflet-popup-extend-button', this._wrapper);
-					this._extendButtonNode.innerHTML = L.popupExtendButton;
-					this.extendButton = this._extendButtonNode.firstChild;
-					L.DomEvent.on( this.extendButton, 'click', this.toggleExtendContent, this);
-					L.DomEvent.on( this.extendButton, 'click', this.extendButton.blur, this.extendButton);
-
-					this._extendContentNode = L.DomUtil.create('div', 'leaflet-popup-extend-content', this._wrapper);
-
-					this.hideExtendContent(true);
-				}
-
-				var extendOptions = this._extendPopup.options || {};
-				if (extendOptions.className)
-					L.DomUtil.addClass(this._extendContentNode, extendOptions.className);
-			}
-*/
 		};
 	} (L.Popup.prototype._initLayout);
 
@@ -190,6 +163,3 @@
 
 
 }(jQuery, L, this, document));
-
-
-
