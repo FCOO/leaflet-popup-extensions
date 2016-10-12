@@ -1,38 +1,38 @@
 {
-  "name": "leaflet-popup-extensions",
-  "version": "0.3.0",
-  "homepage": "https://github.com/FCOO/leaflet-popup-extensions",
-  "authors": [
-    "NielsHolt"
-  ],
-  "description": "",
-  "main": [
-    "dist/leaflet-popup-extensions.js",
-    "dist/leaflet-popup-extensions.css"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/FCOO/leaflet-popup-extensions.git"
-  },
-  "dependencies": {
-    "jquery": "latest",
-    "leaflet": "latest",
-    "leaflet-control-button-group": "fcoo/leaflet-control-button-group#latest"
-  },
-  "devDependencies": {
-    "bourbon": "latest",
-    "modernizr-mixin": "latest",
-    "mathsass": "latest"
-  },
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "moduleType": [
-    "es6"
-  ]
+    "name": "leaflet-popup-extensions",
+    "version": "0.3.0",
+    "homepage": "https://github.com/FCOO/leaflet-popup-extensions",
+    "authors": [
+        "NielsHolt"
+    ],
+    "description": "",
+    "main": [
+        "dist/leaflet-popup-extensions.js",
+        "dist/leaflet-popup-extensions.css"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/FCOO/leaflet-popup-extensions.git"
+    },
+    "dependencies": {
+        "jquery": "latest",
+        "leaflet": "latest",
+        "leaflet-control-button-group": "fcoo/leaflet-control-button-group#latest"
+    },
+    "devDependencies": {
+        "bourbon": "latest",
+        "modernizr-mixin": "latest",
+        "mathsass": "latest"
+    },
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "moduleType": [
+        "es6"
+    ]
 }

@@ -30,7 +30,13 @@
 		function addMarker(onClickObj){
 			L.marker( onClickObj.latLng )
 				.addTo( onClickObj.map )
-				.bindPopup(onClickObj.latLng.toString(4), {icon:'map-marker ', header:'Marker', buttonRemove: true});
+				.bindPopup( onClickObj.latLng.toString(4), 
+                            { 
+                              icon:'map-marker ', 
+                              header:'Marker', 
+                              buttonRemove: false//true
+                            }
+                          );
 			onClickObj.popup._close();
 		}		
 		
@@ -39,10 +45,10 @@
 
 		map.on('click', function( mouseEvent ){
 			var popup = L.popup({
-				maxWidth		: 200,
-				header					: 'This is a very long header and it should be to long',
-				buttonClose			: true,
-				buttons					: [{ icon:'map-marker ', text:'Add marker', onClick: addMarker}],
+				maxWidth	    : 200,
+				header		    : 'This is a very long header and it should be to long',
+				buttonClose	    : false,//true,
+//Not implemented				buttons		    : [{ icon:'map-marker ', text:'Add marker', onClick: addMarker}],
 				buttonHorizontal: false,
 				getContent	: function(popup){ 
 					var content = popup.getLatLng() + '<br>',
