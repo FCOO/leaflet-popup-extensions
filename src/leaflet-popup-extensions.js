@@ -31,7 +31,7 @@
                                                                                      if (onClickObj.source && onClickObj.map)
                                                                                          onClickObj.map.removeLayer(onClickObj.source);
                                                                                  }
-                       },
+                 },
         BUTTON_CLOSE : { id:'btnClose', icon:'times', text:'Close', hoverColor: 'red', onClick: L.Popup.prototype._close }
     });
 

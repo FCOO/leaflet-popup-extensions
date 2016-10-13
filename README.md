@@ -42,7 +42,7 @@ Will add a header and icon to the popup next to the close-button
 `header` is the header text
 `icon` is the name of a [font-awesome icon](http://fontawesome.io/)
 
-#### Buttons
+#### Buttons - NOT IMPLEMENTED!!
 There are tree standard buttons available: `[Ok]`, `[Remove]`, and `[Close]`
 Individual buttons are added by setting `options.buttons` 
    

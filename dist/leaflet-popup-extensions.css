@@ -18,10 +18,6 @@
 .leaflet-popup .leaflet-popup-content {
   margin-top: 0 !important; }
 
-.leaflet-popup .leaflet-popup-tip-container {
-  top: -1px;
-  border-top: 1px solid #fff; }
-
 .leaflet-popup .leaflet-popup-content-wrapper > div {
   box-sizing: border-box;
   margin: 0;
