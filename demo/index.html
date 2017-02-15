@@ -45,22 +45,25 @@
 
 		map.on('click', function( mouseEvent ){
 			var popup = L.popup({
-				maxWidth	    : 200,
-				header		    : 'This is a very long header and it should be to long',
-				buttonClose	    : false,//true,
+				maxWidth	     : 200,
+				header		     : 'This is a very long header and it should be to long',
+				buttonClose	     : false,//true,
 //Not implemented				buttons		    : [{ icon:'map-marker ', text:'Add marker', onClick: addMarker}],
-				buttonHorizontal: false,
-				getContent	: function(popup){ 
-					var content = popup.getLatLng() + '<br>',
-							lines = 1 + Math.floor(Math.random()*10);
-					for (var i=0; i<lines; i++ ){
-						content += 'line '+i+'<br>';
-					}
-					return content + 'This is a random<br>number '+Math.floor(Math.random()*1000000); 
-				},
+				buttonHorizontal : false,
 				updateOnMapEvents: 'dragend,zoomend'
 
 			});
+            popup.setContent( function(popup){ 
+			    var content = popup.getLatLng() + '<br>',
+				    lines = 1 + Math.floor(Math.random()*10);
+                for (var i=0; i<lines; i++ ){
+                    content += 'line '+i+'<br>';
+                }
+                //return content + 'This is a random<br>number '+Math.floor(Math.random()*1000000); 
+                var result = $('<div>' + content + 'This is a random<br>number '+Math.floor(Math.random()*1000000) +'</div>'); 
+                result.attr('data-niels', 'skide godt');
+                return result[0];
+    		});
 
 			popup.setLatLng(mouseEvent.latlng).openOn(map);
 		});

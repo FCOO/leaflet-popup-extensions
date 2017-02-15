@@ -18,7 +18,6 @@
         buttonClose      : false,
         buttons          : [],
         buttonHorizontal : true,
-        getContent       : null,
         context          : null,
         updateOnMapEvents: ''
     });
@@ -97,21 +96,6 @@
             }
         };
     } (L.Popup.prototype._initLayout);
-
-
-
-    //Overwrite Popup._updateContent to use options.getContent when updating the content
-    L.Popup.prototype._updateContent = function (_updateContent) {
-        return function () {
-            //Get the contents from the options.getContent function
-            if (this.options.getContent)
-                this._content = this.options.getContent.apply(this.options.context, [this] );
-
-            //Original function/method
-            _updateContent.apply(this, arguments);
-        };
-    } (L.Popup.prototype._updateContent);
-
 
 
     //Overwrite Popup._getEvents (leaflet version <= 0.7.7) and

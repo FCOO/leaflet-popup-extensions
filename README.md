@@ -16,15 +16,6 @@ http://FCOO.github.io/leaflet-popup-extensions/demo/
 
 ## Usage
 
-### Dynamic creating content
-	var myPopup = L.popup({
-	               getContent: function( popup ){ return 'This is the content'; },
-	               context   : null
-	});
-
-`getContent` returns a string or DOM-element that is the contents of the popup
-`context`	is the optional context of `getContent`
-
 ### Update content on map-events
 	var myPopup = L.popup({
 	               updateOnMapEvents: "zoomend latlngformatchange"
