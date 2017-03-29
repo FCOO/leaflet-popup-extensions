@@ -16,7 +16,7 @@
 
 <body>
 	<div id="map" style="width: 600px; height: 400px"></div>
-	<p>Click on the map to open a popup - drag or zoom the map and see the popup updating when the drag/zoom is finish</p>
+	<p>Click on the map to open a popup</p>
 
 	
 	
@@ -50,20 +50,19 @@
 				buttonClose	     : false,//true,
 //Not implemented				buttons		    : [{ icon:'map-marker ', text:'Add marker', onClick: addMarker}],
 				buttonHorizontal : false,
-				updateOnMapEvents: 'dragend,zoomend'
 
+                getContent: function(popup){ 
+		    	    var content = popup.getLatLng() + '<br>',
+	    			    lines = 1 + Math.floor(Math.random()*10);
+                    for (var i=0; i<lines; i++ ){
+                        content += 'line '+i+'<br>';
+                    }
+                    //return content + 'This is a random<br>number '+Math.floor(Math.random()*1000000); 
+                    var result = $('<div>' + content + 'This is a random<br>number '+Math.floor(Math.random()*1000000) +'</div>'); 
+                    result.attr('data-niels', 'skide godt');
+                    return result[0];
+    		    }
 			});
-            popup.setContent( function(popup){ 
-			    var content = popup.getLatLng() + '<br>',
-				    lines = 1 + Math.floor(Math.random()*10);
-                for (var i=0; i<lines; i++ ){
-                    content += 'line '+i+'<br>';
-                }
-                //return content + 'This is a random<br>number '+Math.floor(Math.random()*1000000); 
-                var result = $('<div>' + content + 'This is a random<br>number '+Math.floor(Math.random()*1000000) +'</div>'); 
-                result.attr('data-niels', 'skide godt');
-                return result[0];
-    		});
 
 			popup.setLatLng(mouseEvent.latlng).openOn(map);
 		});

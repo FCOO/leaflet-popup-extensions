@@ -16,14 +16,16 @@ http://FCOO.github.io/leaflet-popup-extensions/demo/
 
 ## Usage
 
-### Update content on map-events
+### Dynamic creating content
 	var myPopup = L.popup({
-	               updateOnMapEvents: "zoomend latlngformatchange"
+	               getContent: function( popup ){ return 'This is the content'; },
+	               context   : null
 	});
 
-When any of the events in `updateOnMapEvents` is fired on the map, the popup is updated. 
+`getContent` returns a string or DOM-element that is the contents of the popup
+`context`	is the optional context of `getContent`
 
-#### Header and Icon
+### Header and Icon
 	var myPopup = L.popup({
 	               header: "This is a header",
 	               icon  : "map-marker"
@@ -33,7 +35,7 @@ Will add a header and icon to the popup next to the close-button
 `header` is the header text
 `icon` is the name of a [font-awesome icon](http://fontawesome.io/)
 
-#### Buttons - NOT IMPLEMENTED!!
+### Buttons - NOT IMPLEMENTED!!
 There are tree standard buttons available: `[Ok]`, `[Remove]`, and `[Close]`
 Individual buttons are added by setting `options.buttons` 
    
